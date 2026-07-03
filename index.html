@@ -1,0 +1,1119 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SellyNear 孕装达人 Sourcing 效率提升解决方案</title>
+  <style>
+    :root {
+      --ink: #202124;
+      --muted: #656970;
+      --line: #e6e0dc;
+      --paper: #fffaf7;
+      --surface: #ffffff;
+      --rose: #c85d74;
+      --coral: #e98263;
+      --teal: #157f78;
+      --mint: #dff2eb;
+      --amber: #d79a2b;
+      --charcoal: #30343b;
+      --soft: #f4eee9;
+      --shadow: 0 18px 48px rgba(45, 35, 30, .12);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background:
+        linear-gradient(180deg, rgba(255, 250, 247, .96), rgba(255, 250, 247, 1) 420px),
+        repeating-linear-gradient(90deg, rgba(32, 33, 36, .025) 0 1px, transparent 1px 84px);
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .page {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(255, 250, 247, .86);
+      border-bottom: 1px solid rgba(230, 224, 220, .8);
+    }
+
+    .nav {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 64px;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: conic-gradient(from 145deg, var(--rose), var(--coral), var(--teal), var(--rose));
+      box-shadow: inset 0 0 0 6px rgba(255,255,255,.76);
+      flex: 0 0 auto;
+    }
+
+    .brand strong {
+      font-size: 15px;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+
+    .brand span {
+      color: var(--muted);
+      display: block;
+      font-size: 12px;
+      margin-top: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .nav-links a:hover { color: var(--rose); }
+
+    .print-btn {
+      border: 1px solid var(--line);
+      background: var(--surface);
+      color: var(--charcoal);
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(32, 33, 36, .06);
+    }
+
+    .hero {
+      min-height: calc(100vh - 64px);
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 480px;
+      gap: 44px;
+      align-items: center;
+      padding: 54px 0 42px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 34px;
+      height: 2px;
+      background: var(--teal);
+      display: inline-block;
+    }
+
+    h1 {
+      font-size: clamp(44px, 6vw, 82px);
+      line-height: .96;
+      letter-spacing: 0;
+      margin: 0 0 22px;
+      max-width: 820px;
+    }
+
+    .hero-copy {
+      color: var(--charcoal);
+      font-size: 20px;
+      line-height: 1.65;
+      max-width: 760px;
+      margin: 0 0 30px;
+    }
+
+    .hero-points {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      max-width: 780px;
+    }
+
+    .hero-point {
+      background: rgba(255,255,255,.78);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 15px 16px;
+      min-height: 106px;
+    }
+
+    .hero-point b {
+      display: block;
+      font-size: 22px;
+      color: var(--rose);
+      margin-bottom: 8px;
+    }
+
+    .hero-point span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .dashboard {
+      background: rgba(255,255,255,.92);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .dash-top {
+      padding: 20px;
+      background: var(--charcoal);
+      color: #fff;
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: flex-start;
+    }
+
+    .dash-top b {
+      font-size: 18px;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .dash-top span {
+      color: rgba(255,255,255,.66);
+      font-size: 12px;
+    }
+
+    .status-dot {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      color: rgba(255,255,255,.78);
+      white-space: nowrap;
+    }
+
+    .status-dot::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #56d89a;
+      box-shadow: 0 0 0 5px rgba(86, 216, 154, .18);
+    }
+
+    .dash-body { padding: 20px; }
+
+    .pool-row {
+      display: grid;
+      grid-template-columns: 88px 1fr 64px;
+      gap: 12px;
+      align-items: center;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+    }
+
+    .pool-row:last-child { border-bottom: 0; }
+
+    .pool-row strong { color: var(--charcoal); }
+
+    .bar {
+      height: 12px;
+      border-radius: 999px;
+      background: var(--soft);
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      border-radius: inherit;
+    }
+
+    .fill.urgent { width: 82%; background: var(--rose); }
+    .fill.normal { width: 68%; background: var(--teal); }
+    .fill.reserve { width: 51%; background: var(--amber); }
+    .fill.review { width: 29%; background: #8f969e; }
+
+    .mini-mock {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .phone-card {
+      aspect-ratio: 4 / 5;
+      border-radius: 8px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.42), rgba(255,255,255,0)),
+        var(--mint);
+      border: 1px solid #c9e2da;
+      padding: 10px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      min-width: 0;
+    }
+
+    .phone-card:nth-child(2) {
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.4), rgba(255,255,255,0)),
+        #f6d8d0;
+      border-color: #edc0b5;
+    }
+
+    .phone-card:nth-child(3) {
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.42), rgba(255,255,255,0)),
+        #eadfb5;
+      border-color: #ddd09d;
+    }
+
+    .phone-card i {
+      display: block;
+      width: 42%;
+      height: 38%;
+      border-radius: 999px 999px 10px 10px;
+      margin: 0 auto 10px;
+      background: rgba(48, 52, 59, .18);
+    }
+
+    .phone-card span {
+      display: block;
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(48, 52, 59, .26);
+      margin-top: 6px;
+    }
+
+    section {
+      padding: 68px 0;
+      border-top: 1px solid rgba(230, 224, 220, .85);
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+      gap: 48px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1.08;
+      letter-spacing: 0;
+      margin: 0;
+    }
+
+    .lead {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 22px;
+      min-width: 0;
+    }
+
+    .card h3 {
+      font-size: 19px;
+      margin: 0 0 12px;
+      color: var(--charcoal);
+    }
+
+    .card p, .card li {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .card p { margin: 0; }
+    .card ul { margin: 0; padding-left: 18px; }
+
+    .tag {
+      display: inline-block;
+      font-size: 12px;
+      color: var(--teal);
+      background: var(--mint);
+      border-radius: 999px;
+      padding: 5px 9px;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 12px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      min-height: 184px;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: var(--charcoal);
+      color: white;
+      font-size: 12px;
+      font-weight: 800;
+      margin-bottom: 22px;
+    }
+
+    .step h3 {
+      font-size: 16px;
+      margin: 0 0 10px;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    .matrix {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      display: table;
+      box-shadow: 0 8px 28px rgba(32, 33, 36, .04);
+    }
+
+    .matrix th, .matrix td {
+      text-align: left;
+      border-bottom: 1px solid var(--line);
+      padding: 16px 18px;
+      font-size: 14px;
+      vertical-align: top;
+    }
+
+    .matrix th {
+      color: var(--charcoal);
+      background: #f7f0ec;
+      font-size: 13px;
+    }
+
+    .matrix td { color: var(--muted); line-height: 1.6; }
+    .matrix tr:last-child td { border-bottom: 0; }
+    .matrix b { color: var(--ink); }
+
+    .score {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .score-panel {
+      background: var(--charcoal);
+      border-radius: 8px;
+      color: white;
+      padding: 26px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 300px;
+    }
+
+    .score-panel h3 {
+      font-size: 26px;
+      margin: 0 0 16px;
+      line-height: 1.2;
+    }
+
+    .formula {
+      display: grid;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .formula div {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 10px;
+      align-items: center;
+      font-size: 13px;
+      color: rgba(255,255,255,.72);
+    }
+
+    .formula span {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.16);
+      overflow: hidden;
+    }
+
+    .formula span::before {
+      content: "";
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--coral);
+    }
+
+    .formula div:nth-child(1) span::before { width: 35%; }
+    .formula div:nth-child(2) span::before { width: 30%; background: var(--teal); }
+    .formula div:nth-child(3) span::before { width: 20%; background: var(--amber); }
+    .formula div:nth-child(4) span::before { width: 15%; background: #a3d7c9; }
+
+    .field-list {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .field-list span {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 12px 13px;
+      color: var(--charcoal);
+      font-size: 13px;
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .phase {
+      background: var(--surface);
+      border-left: 5px solid var(--rose);
+      border-radius: 8px;
+      padding: 20px;
+      border-top: 1px solid var(--line);
+      border-right: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .phase:nth-child(2) { border-left-color: var(--teal); }
+    .phase:nth-child(3) { border-left-color: var(--amber); }
+    .phase:nth-child(4) { border-left-color: var(--charcoal); }
+
+    .phase b {
+      display: block;
+      font-size: 13px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .phase h3 {
+      margin: 0 0 10px;
+      font-size: 17px;
+    }
+
+    .phase p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .deliverables {
+      background: var(--charcoal);
+      color: white;
+      border-radius: 8px;
+      padding: 30px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    .deliverables h2 { color: white; }
+    .deliverables .lead { color: rgba(255,255,255,.68); }
+
+    .deliverable-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .deliverable {
+      border: 1px solid rgba(255,255,255,.16);
+      background: rgba(255,255,255,.06);
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .deliverable b {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+
+    .deliverable span {
+      color: rgba(255,255,255,.66);
+      font-size: 13px;
+      line-height: 1.65;
+      display: block;
+    }
+
+    .closing {
+      padding-bottom: 84px;
+    }
+
+    .closing-box {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 34px;
+      display: grid;
+      grid-template-columns: 1fr 280px;
+      gap: 28px;
+      align-items: center;
+      box-shadow: var(--shadow);
+    }
+
+    .closing-box h2 { margin-bottom: 14px; }
+
+    .quote {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.75;
+      margin: 0;
+    }
+
+    .next {
+      background: var(--mint);
+      border: 1px solid #c6e4dc;
+      border-radius: 8px;
+      padding: 18px;
+    }
+
+    .next b {
+      display: block;
+      color: var(--teal);
+      margin-bottom: 10px;
+      font-size: 15px;
+    }
+
+    .next span {
+      display: block;
+      color: var(--charcoal);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 980px) {
+      .nav-links { display: none; }
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 42px;
+      }
+      .dashboard { max-width: 560px; }
+      .section-head,
+      .score,
+      .deliverables,
+      .closing-box {
+        grid-template-columns: 1fr;
+      }
+      .grid-3,
+      .process,
+      .timeline {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .field-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 640px) {
+      .page, .nav { width: min(100% - 24px, 1180px); }
+      .brand span { display: none; }
+      .print-btn { display: none; }
+      .hero-points,
+      .grid-3,
+      .grid-2,
+      .process,
+      .timeline,
+      .deliverable-grid {
+        grid-template-columns: 1fr;
+      }
+      .field-list { grid-template-columns: 1fr; }
+      h1 { font-size: 40px; }
+      .hero-copy { font-size: 17px; }
+      .matrix {
+        table-layout: fixed;
+      }
+      .matrix th, .matrix td {
+        padding: 11px 9px;
+        font-size: 12px;
+        white-space: normal;
+        overflow-wrap: anywhere;
+        word-break: break-word;
+      }
+      .closing-box,
+      .deliverables {
+        padding: 22px;
+      }
+      section { padding: 48px 0; }
+    }
+
+    @media print {
+      header { position: static; }
+      .print-btn { display: none; }
+      body { background: #fff; }
+      .hero { min-height: auto; }
+      section { break-inside: avoid; }
+      .dashboard, .card, .closing-box { box-shadow: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="nav">
+      <a class="brand" href="#top" aria-label="SellyNear solution top">
+        <span class="mark" aria-hidden="true"></span>
+        <span>
+          <strong>SellyNear</strong>
+          <span>孕装达人 Sourcing 解决方案</span>
+        </span>
+      </a>
+      <div class="nav-links" aria-label="页面导航">
+        <a href="#challenge">挑战</a>
+        <a href="#system">机制</a>
+        <a href="#grading">评分</a>
+        <a href="#workflow">工作流</a>
+        <a href="#deliver">交付</a>
+      </div>
+      <button class="print-btn" onclick="window.print()">打印 / 导出 PDF</button>
+    </nav>
+  </header>
+
+  <main id="top">
+    <div class="page hero">
+      <div>
+        <h1>SellyNear 孕装达人供给池效率提升方案</h1>
+        <p class="hero-copy">
+          将孕装达人 sourcing 从“人工翻笔记找人”升级为“孕周识别、图片调性评分、分层触达、储备唤醒”的动态机制，让媒介优先联系正在 5-10 个月拍摄窗口内、且真实适合上身穿搭内容的博主与素人。
+        </p>
+        <div class="hero-points">
+          <div class="hero-point">
+            <b>5-10 月</b>
+            <span>围绕显孕阶段建立合作优先级，减少错过黄金拍摄窗口。</span>
+          </div>
+          <div class="hero-point">
+            <b>3-5 篇</b>
+            <span>用近期内容判断孕周与是否已生产，避免老孕期内容误判。</span>
+          </div>
+          <div class="hero-point">
+            <b>100 分</b>
+            <span>用图片质量和穿搭调性评分，提前筛出更适合品牌表达的账号。</span>
+          </div>
+        </div>
+      </div>
+
+      <aside class="dashboard" aria-label="孕周供给池仪表盘示意">
+        <div class="dash-top">
+          <div>
+            <b>SellyNear Creator Pool</b>
+            <span>孕周供给池 / 媒介每日工作台</span>
+          </div>
+          <span class="status-dot">更新中</span>
+        </div>
+        <div class="dash-body">
+          <div class="pool-row">
+            <strong>7-10月</strong>
+            <div class="bar"><div class="fill urgent"></div></div>
+            <span>紧急</span>
+          </div>
+          <div class="pool-row">
+            <strong>4-6月</strong>
+            <div class="bar"><div class="fill normal"></div></div>
+            <span>正常</span>
+          </div>
+          <div class="pool-row">
+            <strong>2-3月</strong>
+            <div class="bar"><div class="fill reserve"></div></div>
+            <span>储备</span>
+          </div>
+          <div class="pool-row">
+            <strong>不明确</strong>
+            <div class="bar"><div class="fill review"></div></div>
+            <span>复核</span>
+          </div>
+          <div class="mini-mock" aria-hidden="true">
+            <div class="phone-card"><i></i><span></span><span style="width:70%"></span></div>
+            <div class="phone-card"><i></i><span></span><span style="width:55%"></span></div>
+            <div class="phone-card"><i></i><span></span><span style="width:82%"></span></div>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section id="challenge">
+      <div class="page">
+        <div class="section-head">
+          <h2>品牌当前的关键挑战</h2>
+          <p class="lead">孕装类目对达人“当下状态”的要求比常规服饰更高。账号好看不代表此刻能拍，内容像孕妈不代表还在孕期，人工筛选越往后越容易被时间窗口拖慢。</p>
+        </div>
+        <div class="grid-3">
+          <div class="card">
+            <span class="tag">窗口短</span>
+            <h3>必须卡在显孕阶段</h3>
+            <p>合作期需要达人处于 5-10 个月，过早不显肚、过晚档期和身体状态不稳定，已生产账号则完全不适合当前孕装上身内容。</p>
+          </div>
+          <div class="card">
+            <span class="tag">判断慢</span>
+            <h3>人工翻笔记效率低</h3>
+            <p>媒介需要查看近期笔记、评论、标题、图片和发布时间，才能判断是否仍在孕期。标准不统一时，误入和漏选都会增加。</p>
+          </div>
+          <div class="card">
+            <span class="tag">调性散</span>
+            <h3>能拍不等于适合品牌</h3>
+            <p>孕装需要清楚展示版型、孕肚和整体穿搭。自拍、糊图、杂乱场景、强记录型账号，即使人在孕期也不一定适合 SellyNear。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="system">
+      <div class="page">
+        <div class="section-head">
+          <h2>解决方案：动态孕期达人供给池</h2>
+          <p class="lead">围绕“找得到、判得准、分得清、跟得上”四件事，搭建 SellyNear 专属达人 sourcing 工作流。</p>
+        </div>
+        <div class="process">
+          <div class="step">
+            <h3>抓取孕期穿搭笔记</h3>
+            <p>覆盖孕期穿搭、孕妇穿搭、孕肚 ootd、孕期通勤、孕妇裙等关键词，先从内容找到账号。</p>
+          </div>
+          <div class="step">
+            <h3>账号聚合与去重</h3>
+            <p>把重复出现的博主与素人合并，保留来源关键词、最近笔记、互动表现和内容类型。</p>
+          </div>
+          <div class="step">
+            <h3>近期内容判断孕周</h3>
+            <p>读取最近 3-5 篇内容，结合孕周、预产期、产检节点和生产信号，判断是否仍在合作窗口。</p>
+          </div>
+          <div class="step">
+            <h3>图片质量与调性评分</h3>
+            <p>对封面图、上身图、场景质感、穿搭完整度打分，把不适合品牌视觉的账号提前过滤。</p>
+          </div>
+          <div class="step">
+            <h3>分层触达与提醒</h3>
+            <p>按孕周进入紧急、正常、储备、复核、剔除池，自动生成媒介每日待处理清单。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <div class="page">
+        <div class="section-head">
+          <h2>两条账号来源链路</h2>
+          <p class="lead">既抓当下可合作账号，也提前沉淀刚怀孕的储备账号，让 SellyNear 不只在高峰窗口被动抢人。</p>
+        </div>
+        <div class="grid-2">
+          <div class="card">
+            <span class="tag">即时合作池</span>
+            <h3>孕期穿搭内容账号</h3>
+            <ul>
+              <li>关键词：孕期穿搭、孕肚穿搭、孕妇 ootd、显孕穿搭。</li>
+              <li>场景：通勤、旅行、约会、拍照、居家、外出。</li>
+              <li>品类：孕妇裙、孕妇裤、打底、牛仔、内搭。</li>
+              <li>目标：快速找到 4-10 个月且能出图的账号。</li>
+            </ul>
+          </div>
+          <div class="card">
+            <span class="tag">早孕储备池</span>
+            <h3>刚怀孕博主提前建联</h3>
+            <ul>
+              <li>来源：可丽蓝等验孕/备孕品牌合作博主。</li>
+              <li>信号：官宣怀孕、备孕成功、早孕测试、孕反、建档。</li>
+              <li>动作：轻触达建联，不急于报价或寄样。</li>
+              <li>目标：推算进入 5 个月日期，到点提醒媒介二次沟通。</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="grading">
+      <div class="page">
+        <div class="section-head">
+          <h2>孕周判断与图片评分</h2>
+          <p class="lead">SellyNear 需要的是“真实孕期 + 能拍穿搭 + 调性适配”的账号，因此判断模型必须同时看时间状态和视觉质量。</p>
+        </div>
+        <div class="score">
+          <div>
+            <table class="matrix">
+              <thead>
+                <tr>
+                  <th>判断维度</th>
+                  <th>优先信号</th>
+                  <th>处理方式</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>明确孕周</b></td>
+                  <td>孕 24 周、25w+3、6 个月等</td>
+                  <td>直接推算当前孕周，进入对应分层。</td>
+                </tr>
+                <tr>
+                  <td><b>预产期</b></td>
+                  <td>正文或评论出现预产期</td>
+                  <td>按当前日期反推孕周，并保留证据。</td>
+                </tr>
+                <tr>
+                  <td><b>产检节点</b></td>
+                  <td>NT、四维、糖耐、孕晚期倒计时</td>
+                  <td>作为辅助判断，必要时人工复核。</td>
+                </tr>
+                <tr>
+                  <td><b>生产信号</b></td>
+                  <td>已生、卸货、月子、产后、宝宝满月</td>
+                  <td>剔除当前孕装合作池，避免误触达。</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <aside class="score-panel">
+            <div>
+              <h3>合作优先级评分</h3>
+              <p class="lead" style="font-size:15px;color:rgba(255,255,255,.68)">用统一分数减少人工主观差异，让媒介先处理最值得联系的人。</p>
+            </div>
+            <div class="formula" aria-label="合作优先级公式">
+              <div><b>孕周窗口</b><span></span></div>
+              <div><b>图片调性</b><span></span></div>
+              <div><b>内容匹配</b><span></span></div>
+              <div><b>互动质量</b><span></span></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="page">
+        <div class="section-head">
+          <h2>达人分层与媒介动作</h2>
+          <p class="lead">把“找达人”变成“处理每日任务”。不同孕周的人不再混在一个表里，而是进入不同的合作节奏。</p>
+        </div>
+        <table class="matrix">
+          <thead>
+            <tr>
+              <th>分层</th>
+              <th>孕周</th>
+              <th>合作角色</th>
+              <th>媒介动作</th>
+              <th>时效</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>紧急联系池</b></td>
+              <td>7-10 个月</td>
+              <td>黄金拍摄窗口</td>
+              <td>当日私信/建联，48 小时二次触达，优先寄样。</td>
+              <td>T+0</td>
+            </tr>
+            <tr>
+              <td><b>正常合作池</b></td>
+              <td>4-6 个月</td>
+              <td>核心合作人群</td>
+              <td>确认档期、尺码、预产期、内容风格和报价。</td>
+              <td>T+3</td>
+            </tr>
+            <tr>
+              <td><b>储备培育池</b></td>
+              <td>2-3 个月</td>
+              <td>提前建联对象</td>
+              <td>轻触达，记录预计 5 个月日期，到点提醒二次沟通。</td>
+              <td>T+30/60</td>
+            </tr>
+            <tr>
+              <td><b>观察复核池</b></td>
+              <td>不明确</td>
+              <td>待判断账号</td>
+              <td>人工复核最近笔记，必要时私信确认孕周或预产期。</td>
+              <td>每周</td>
+            </tr>
+            <tr>
+              <td><b>剔除池</b></td>
+              <td>已生产/不匹配</td>
+              <td>非当前目标</td>
+              <td>不进入主流程，可保留为产后或母婴内容池。</td>
+              <td>无</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="fields">
+      <div class="page">
+        <div class="section-head">
+          <h2>品牌可见的数据字段</h2>
+          <p class="lead">每个达人都保留判断证据和下一步动作，方便 SellyNear 复盘来源质量、媒介效率和发布转化。</p>
+        </div>
+        <div class="field-list">
+          <span>账号昵称 / 主页链接</span>
+          <span>来源关键词 / 来源笔记</span>
+          <span>最近孕周证据</span>
+          <span>推算当前孕周</span>
+          <span>预估预产期</span>
+          <span>孕周分层</span>
+          <span>是否已生产信号</span>
+          <span>图片评分</span>
+          <span>调性标签</span>
+          <span>粉丝量 / 互动量</span>
+          <span>合作优先级分</span>
+          <span>商务状态</span>
+          <span>首次联系时间</span>
+          <span>最近跟进时间</span>
+          <span>下次提醒时间</span>
+          <span>媒介负责人</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="roadmap">
+      <div class="page">
+        <div class="section-head">
+          <h2>4 周落地节奏</h2>
+          <p class="lead">先跑通规则和小样本，再进入媒介日常工作台，最后用转化数据反推关键词和评分模型。</p>
+        </div>
+        <div class="timeline">
+          <div class="phase">
+            <b>Week 1</b>
+            <h3>规则搭建</h3>
+            <p>确定关键词池、剔除词、孕周判断词典、图片评分标准和品牌调性样例。</p>
+          </div>
+          <div class="phase">
+            <b>Week 2</b>
+            <h3>样本试跑</h3>
+            <p>先跑 500-1000 个账号样本，人工复核孕周和图片评分准确率。</p>
+          </div>
+          <div class="phase">
+            <b>Week 3</b>
+            <h3>媒介接入</h3>
+            <p>每日输出紧急联系池、正常合作池、储备提醒池，开始跟踪触达转化。</p>
+          </div>
+          <div class="phase">
+            <b>Week 4+</b>
+            <h3>持续优化</h3>
+            <p>按来源关键词、图片评分、合作转化持续调整，形成长期动态供给池。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="deliver">
+      <div class="page">
+        <div class="deliverables">
+          <div>
+            <h2>合作交付物</h2>
+            <p class="lead">交付重点不是一张静态达人名单，而是一套能持续补充、判断、分层和唤醒的 sourcing 机制。</p>
+          </div>
+          <div class="deliverable-grid">
+            <div class="deliverable">
+              <b>孕期达人判断结果库</b>
+              <span>包含账号信息、来源证据、孕周判断、生产信号、图片评分和分层状态。</span>
+            </div>
+            <div class="deliverable">
+              <b>媒介每日工作台</b>
+              <span>输出今日紧急联系、今日待跟进、今日储备唤醒三类清单。</span>
+            </div>
+            <div class="deliverable">
+              <b>早孕储备池</b>
+              <span>沉淀可丽蓝等验孕/备孕合作博主，进入 5 个月后自动提醒沟通。</span>
+            </div>
+            <div class="deliverable">
+              <b>周度复盘看板</b>
+              <span>追踪有效账号率、图片通过率、回复率、寄样率、发布率和储备唤醒率。</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="closing">
+      <div class="page">
+        <div class="closing-box">
+          <div>
+            <h2>对 SellyNear 的价值</h2>
+            <p class="quote">
+              这套机制可以把达人 sourcing 的重心从“碰运气找孕妈”转为“围绕孕周窗口经营供给”。SellyNear 能更早识别潜在博主，更快联系正在显孕阶段的账号，并用统一的图片调性标准提升最终发布内容的稳定性。
+            </p>
+          </div>
+          <div class="next">
+            <b>建议下一步</b>
+            <span>用 SellyNear 目标调性样图确定图片评分阈值，并选取一批关键词进行首轮账号试跑，验证 1 周内可联系账号量和媒介回复率。</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
